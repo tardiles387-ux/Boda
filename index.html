@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+                <title>Boda de Kevin y Iara</title>
+                <link rel="stylesheet" href="style.css">
+                <!-- Google Fonts & Font Awesome Icons -->
+                <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        </head>
+        <body>
+
+                <div class="contenedor">
+                        <!-- ============================================== -->
+                        <!-- PANTALLA 1: EL SOBRE DE ENTRADA (ESTILO BODA)  -->
+                        <!-- ============================================== -->
+                        <div class="marco" id="pantalla-sobre">
+                                <div class="titulo">
+                                        BODA DE KEVIN Y IARA
+                                </div>
+                                <div class="fondo">
+                                        <div class="sobre">
+                                                <div class="carta">
+                                                        <span class="corazon">♥</span>
+                                                        <h2>Nuestra Boda</h2>
+                                                        <h1>INVITACIÓN</h1>
+                                                        <button id="abrir" onclick="abrirInvitacion()">Ver Invitación</button>
+                                                </div>
+                                                <div class="solapa-izquierda"></div>
+                                                <div class="solapa-derecha"></div>
+                                                <div class="solapa-abajo"></div>
+                                                <!-- SELLO CON LOS MUÑEQUITOS DE BODA DENTRO DEL CÍRCULO -->
+                                                <div class="sello" onclick="abrirInvitacion()">
+                                                        <img src="boda.jpeg" alt="Novios">
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <!-- ============================================== -->
+                        <!-- PANTALLA 2: LA INVITACIÓN COMPLETA                                -->
+                        <!-- ============================================== -->
+                        <div class="invitacion-scroll hidden" id="pantalla-invitacion">
+
+                                <!-- BANNER SUPERIOR -->
+                                <div class="banner-estilo">
+                                        <span>BODA DE KEVIN Y IARA</span>
+                                </div>
+
+                                <!-- TARJETA 1: PORTADA / VIDEO -->
+                                <section class="tarjeta hero-card">
+                                        <p class="subtitulo-xv">NUESTRA BODA</p>
+                                        <h1 class="nombre-titulo">KEVIN Y IARA</h1>
+
+                                        <!-- CONTENEDOR DEL VIDEO -->
+                                        <div class="video-container">
+                                                <video id="video-invitacion" playsinline loop poster="inicio/img/foto.jpg">
+                                                        <source src="video.mp4" type="video/mp4">
+                                                        Tu navegador no soporta videos HTML5
+                                                </video>
+                                                <!-- Botón superpuesto para pausar / reanudar -->
+                                                <button class="btn-control-video" onclick="toggleVideo()">
+                                                        <i class="fa-solid fa-play" id="btn-video-icon"></i>
+                                                </button>
+                                        </div>
+                                </section>
+
+            <!-- TARJETA 2: CUÁNDO / CUENTA REGRESIVA -->
+             <section class="tarjeta info-card">
+                                        <div class="icono-card"><i class="fa-regular fa-calendar-days"></i></div>
+                                        <h2>¿CUÁNDO?</h2>
+                                        <p class="fecha-destacada">30 DE ENERO DE 2027</p>
+                                        <p class="hora-destacada">11:30 A 19:30 HS</p>
+
+                                        <div class="countdown-box">
+                                                <p class="cuenta-titulo">FALTAN</p>
+                                                <div id="countdown" class="timer-grid">
+                                                        <div class="time-item"><span id="days">00</span><small>DÍAS</small></div>
+                                                        <span class="dos-puntos">:</span>
+                                                        <div class="time-item"><span id="hours">00</span><small>HORAS</small></div>
+                                                        <span class="dos-puntos">:</span>
+                                                        <div class="time-item"><span id="minutes">00</span><small>MINS</small></div>
+                                                        <span class="dos-puntos">:</span>
+                                                        <div class="time-item"><span id="seconds">00</span><small>SEGS</small></div>
+                                                </div>
+                                        </div>
+                                </section>
+
+<!-- TARJETA 3: DÓNDE Y MAPA -->
+                                <section class="tarjeta mapa-card">
+                                        <div class="icono-card"><i class="fa-solid fa-location-dot"></i></div>
+                                        <h2>¿DÓNDE?</h2>
+                                        <p class="direccion-texto">
+                                                <strong>Casita del niño</strong>
+                                        </p>
+
+                                        <!-- Enlace oficial al lugar registrado en Google Maps -->
+                                        <a href="https://maps.app.goo.gl/2Fp1fPibejH4yUna7" target="_blank" class="btn-plateado">
+                                                <i class="fa-solid fa-map-location-dot" style="margin-right: 8px;"></i>CÓMO LLEGAR
+                                        </a>
+                                </section>
+
+                                <!-- TARJETA 4: CONFIRMACIÓN (RSVP) -->
+                                <section class="tarjeta rsvp-card">
+                                        <div class="icono-card"><i class="fa-regular fa-envelope"></i></div>
+                                        <h2>CONFIRMÁ TU ASISTENCIA</h2>
+                                        <p class="desc-card">Es muy importante para nosotros saber si vas a poder acompañarnos en esta noche tan especial.</p>
+
+                                        <!-- Botón que abre el modal de confirmación -->
+                                        <button class="btn-blanco" onclick="mostrarModalRSVP()">CONFIRMAR AQUÍ</button>
+                                </section>
+
+                                <!-- TARJETA 5: DRESS CODE -->
+                                <section class="tarjeta dresscode-card">
+                                        <div class="icono-card"><i class="fa-solid fa-user-tie"></i> <i class="fa-solid fa-person-dress"></i></div>
+                                        <p class="reserva-color">Elegante SPORT</p>
+                                </section>
+
+                                <!-- TARJETA 6: REGALOS -->
+                                <section class="tarjeta regalos-card">
+                                        <div class="icono-card"><i class="fa-solid fa-gift"></i></div>
+                                        <h2>REGALOS</h2>
+                                        <p class="desc-card">Su presencia es nuestro mejor regalo. Pero si desean hacernos un obsequio, pueden colaborar con nuestra luna de miel.</p>
+                                        <button class="btn-plateado" onclick="mostrarModalCBU()">VER DATOS BANCARIOS</button>
+                                </section>
+
+                                <!-- TARJETA 7: CARPETA COMPARTIDA DE FOTOS -->
+                                <section class="tarjeta fotos-compartidas-card">
+                                        <div class="icono-card"><i class="fa-regular fa-images"></i></div>
+                                        <h2>CARPETA COMPARTIDA</h2>
+                                        <p class="desc-card">¡Subí acá las fotos y videos que saques durante la fiesta para guardarlos de recuerdo!</p>
+                                        <a href="https://drive.google.com/drive/folders/16jxY6M_41cQnbJAJkrDgNTMVgbKYwxqd" target="_blank" style="display: block; width: 100%; padding: 12px 20px; background: var(--plateado-degradado); color: #2c2416; font-weight: bold; text-decoration: none; border-radius: 10px; margin-top: 20px; text-align: center; box-sizing: border-box; font-size: 14px; letter-spacing: 1px;">
+                                                SUBIR FOTOS
+                                        </a>
+                                </section>
+
+                                <!-- TARJETA 8: DESPEDIDA -->
+                                <section class="tarjeta footer-card">
+                                        <p class="gracias-texto">¡LOS ESPERAMOS PARA CELEBRAR JUNTOS!</p>
+                                        <h1 class="nombre-titulo">KEVIN Y IARA</h1>
+                                </section>
+
+                        </div>
+
+                </div>
+
+                <!-- VENTANA EMERGENTE (MODAL DATOS) -->
+                <div class="modal-cbu" id="modal-cbu" style="display: none;">
+                        <div class="modal-contenido">
+                                <span class="cerrar-modal" onclick="cerrarModalCBU()">&times;</span>
+                                <h3>DATOS BANCARIOS</h3>
+                                <p class="desc-card" style="margin-bottom: 15px;">¡Muchas gracias por regalarnos tu ayuda!</p>
+
+                                <!-- OPCIÓN DE IARA -->
+                                <div class="bloque-alias" style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 10px; margin-bottom: 12px;">
+                                                <p><strong>Titular:</strong> IARA</p>
+                                                <p><strong>Alias:</strong> <span id="alias-iara">burgos.iara.mp</span></p>
+                                                <button class="btn-plateado" onclick="copiarAlias('alias-iara')" style="margin-top: 8px; font-size: 0.8rem; padding: 8px;">
+                                                        <i class="fa-regular fa-copy" style="margin-right: 6px;"></i>COPIAR ALIAS DE IARA
+                                                </button>
+                                </div>
+
+                                <!-- OPCIÓN DE KEVIN (Reemplaza con el alias real de él) -->
+                                <div class="bloque-alias" style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 10px;">
+                                                <p><strong>Titular:</strong> KEVIN</p>
+                                                <p><strong>Alias:</strong> <span id="alias-kevin">demonty.k</span></p>
+                                                <button class="btn-plateado" onclick="copiarAlias('alias-kevin')" style="margin-top: 8px; font-size: 0.8rem; padding: 8px;">
+                                                        <i class="fa-regular fa-copy" style="margin-right: 6px;"></i>COPIAR ALIAS DE KEVIN
+                                                </button>
+                                </div>
+                        </div>
+                </div>
+
+                <!-- MODAL DE CONFIRMACIÓN (RSVP) -->
+                <div class="modal-cbu" id="modal-rsvp" style="display: none;">
+                        <div class="modal-contenido">
+                                <span class="cerrar-modal" onclick="cerrarModalRSVP()">&times;</span>
+                                <h3>CONFIRMAR ASISTENCIA</h3>
+                                <p class="desc-card" style="margin-bottom: 15px;">Elegí a quién querés enviarle tu mensaje de confirmación:</p>
+
+                                <!-- BOTÓN PARA ESCRIBIRLE A IARA -->
+                                <a href="https://wa.me/+5491123578553?text=¡Hola%20Iara!%20Quería%20confirmarte%20que%20SÍ%20voy%20a%20asistir%20a%20la%20boda.%20¡Felicitaciones!" target="_blank" class="btn-plateado" style="margin-bottom: 12px; text-decoration: none;">
+                                        <i class="fa-brands fa-whatsapp" style="margin-right: 8px; font-size: 1.1rem;"></i>CONFIRMAR CON IARA
+                                </a>
+
+                                <!-- BOTÓN PARA ESCRIBIRLE A KEVIN -->
+                                <a href="https://wa.me/+5491128940309?text=¡Hola%20Kevin!%20Quería%20confirmarte%20que%20SÍ%20voy%20a%20asistir%20a%20la%20boda.%20¡Felicitaciones!" target="_blank" class="btn-plateado" style="text-decoration: none;">
+                                        <i class="fa-brands fa-whatsapp" style="margin-right: 8px; font-size: 1.1rem;"></i>CONFIRMAR CON KEVIN
+                                </a>
+                        </div>
+                </div>
+
+                <script src="script.js"></script>
+        </body>
+</html>

@@ -1,0 +1,487 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+:root {
+        --boda-negro: #0b0b0b;
+        --boda-tarjeta: rgba(18, 18, 18, 0.95); /* Tarjetas negras elegantes con sutil transparencia */
+        --plateado-degradado: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa771c 100%);
+        --borde-plateado: rgba(212, 175, 55, 0.35);
+        --texto-claro: #fcfaf7;
+}
+
+body {
+        width: 100vw;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: system-ui, -apple-system, sans-serif;
+
+        /* FONDO GENERAL OSCURO Y MODERNO */
+        background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url("fondo.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+}
+
+/* CONTENEDOR PRINCIPAL RESPONSIVE */
+.contenedor {
+        width: 100%;
+        max-width: 480px;
+        min-height: 100vh;
+        margin: 0 auto;
+        position: relative;
+}
+
+/* ============================================== */
+/* ESTILOS DEL SOBRE (NEGRO Y DORADO)             */
+/* ============================================== */
+.marco {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 480px;
+        overflow: hidden;
+        z-index: 100;
+        transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.marco.fade-out {
+        opacity: 0;
+        visibility: hidden;
+}
+
+.titulo {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px);
+        max-width: 340px;
+        height: 55px;
+        background: #141414;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #f3e5ab;
+        box-shadow: 0 8px 25px rgba(0,0,0,.6);
+        z-index: 20;
+        border: 1px solid #d4af37;
+}
+
+.fondo {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+}
+
+.sobre {
+        position: absolute;
+        bottom: 10vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 320px;
+        height: 220px;
+}
+
+.carta {
+        position: absolute;
+        left: 50%;
+        top: -85px;
+        transform: translateX(-50%) rotate(-3deg);
+        width: 85%;
+        max-width: 260px;
+        height: 260px;
+        background: #141414;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0,0,0,.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        padding: 20px 15px;
+        text-align: center;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.corazon {
+        color: #d4af37;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+}
+
+.carta h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.4rem;
+        color: #b3a47c;
+        font-weight: 500;
+}
+
+.carta h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2rem;
+        color: #ffffff;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+}
+
+.carta button {
+        padding: 12px 28px;
+        border: 1px solid #d4af37;
+        border-radius: 30px;
+        background: #d4af37;
+        color: #141414;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: .3s;
+}
+
+.carta button:hover {
+        background: #f3e5ab;
+}
+
+/* Solapas del sobre en tonos oscuros elegantes */
+.solapa-abajo {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: #1e1e1e;
+        clip-path: polygon(0 100%, 50% 35%, 100% 100%);
+        z-index: 4;
+}
+
+.solapa-izquierda {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50%;
+        height: 100%;
+        background: #171717;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+        z-index: 5;
+}
+
+.solapa-derecha {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 50%;
+        height: 100%;
+        background: #222222;
+        clip-path: polygon(100% 0, 0 50%, 100% 100%);
+        z-index: 5;
+}
+
+/* SELLO CON LOS MUÑECOS */
+.sello {
+        position: absolute;
+        left: 50%;
+        bottom: 15px;
+        transform: translateX(-50%);
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background: #141414;
+        border: 2px solid #d4af37;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,.6);
+        z-index: 8;
+        cursor: pointer;
+        overflow: hidden;
+}
+
+.sello img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    mix-blend-mode: screen; /* Esto hace que el fondo blanco de la imagen se vuelva transparente automáticamente sobre el círculo negro */
+}
+
+/* ============================================== */
+/* ESTILOS DE LA INVITACIÓN DESPLEGADA (OSCURA)   */
+/* ============================================== */
+.invitacion-scroll {
+        padding: 20px 15px 50px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+}
+
+.invitacion-scroll.hidden {
+        display: none;
+}
+
+.banner-estilo {
+        background: #141414;
+        color: #f3e5ab;
+        text-align: center;
+        padding: 12px;
+        border-radius: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        border: 1px solid #d4af37;
+}
+
+.tarjeta {
+        background: var(--boda-tarjeta);
+        border: 1px solid var(--borde-plateado);
+        border-radius: 16px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        backdrop-filter: blur(5px);
+}
+
+.subtitulo-xv {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        color: #d4af37;
+        font-weight: 600;
+}
+
+.nombre-titulo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.6rem;
+        letter-spacing: 2px;
+        background: var(--plateado-degradado);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 5px 0 15px 0;
+}
+
+/* VIDEO DE PORTADA */
+.video-container {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.video-container video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+}
+
+.btn-control-video {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--plateado-degradado);
+        border: none;
+        color: #141414;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+}
+
+/* TEXTOS EN TARJETAS OSCURAS */
+.icono-card {
+        font-size: 2rem;
+        color: #d4af37;
+        margin-bottom: 10px;
+}
+
+.tarjeta h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.7rem;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        color: #ffffff;
+}
+
+.fecha-destacada {
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #ffffff;
+}
+
+.cuenta-titulo, .timer-grid {
+        color: #ffffff;
+}
+
+.hora-destacada {
+        color: #d4af37;
+        margin-bottom: 20px;
+        font-weight: 600;
+}
+
+.desc-card {
+        font-size: 0.85rem;
+        color: #cccccc;
+        line-height: 1.6;
+        margin-bottom: 20px;
+}
+
+.direccion-texto {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #e2d9cd;
+}
+
+.reserva-color {
+        font-size: 0.9rem;
+        color: #cccccc;
+        margin-top: 5px;
+}
+
+/* BOTONES TÁCTILES */
+.btn-plateado, .btn-blanco {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 48px;
+        padding: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn-plateado {
+        background: var(--plateado-degradado);
+        color: #141414;
+}
+
+.btn-blanco {
+        background: #141414;
+        color: #ffffff;
+        border: 1px solid #d4af37;
+}
+
+/* CUENTA REGRESIVA */
+.countdown-box {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 15px 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.cuenta-titulo {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        color: #b3a47c;
+}
+
+.timer-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+}
+
+.time-item {
+        display: flex;
+        flex-direction: column;
+        min-width: 42px;
+}
+
+.time-item span {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #f3e5ab;
+}
+
+.time-item small {
+        font-size: 0.6rem;
+        color: #d4af37;
+}
+
+.dos-puntos {
+        font-size: 1.2rem;
+        margin-top: -10px;
+        color: #ffffff;
+}
+
+.gracias-texto {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        color: #f3e5ab;
+}
+
+/* MODALES (CBU y RSVP) */
+.modal-cbu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 200;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+}
+
+.modal-contenido {
+        background: #141414;
+        border: 1px solid #d4af37;
+        padding: 30px 20px;
+        border-radius: 16px;
+        text-align: center;
+        width: 100%;
+        max-width: 350px;
+        position: relative;
+        color: #ffffff;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+}
+
+.modal-contenido h3 {
+        font-family: 'Cormorant Garamond', serif;
+        margin-bottom: 15px;
+        font-size: 1.6rem;
+        color: #f3e5ab;
+}
+
+.modal-contenido p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        color: #cccccc;
+}
+
+.cerrar-modal {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.8rem;
+        color: #ffffff;
+        cursor: pointer;
+}
